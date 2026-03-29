@@ -17440,30 +17440,80 @@ opacity:1
 /* Center align logo image vertically and horizontally in its container */
 .menu-logo {
     display: flex !important;
-    align-items: center; /* Vertical Center */
-    justify-content: center; /* Horizontal Center, if container is wider */
-    float: left; /* Keep original float */
+    align-items: center;
+    justify-content: flex-start;
+    float: left;
+    width: auto !important;
+    height: 100px;
+    max-height: 100px;
+    transition: all 0.3s ease;
 }
 
 .menu-logo a {
-    display: flex !important; /* Needed to center image inside anchor */
+    display: flex !important;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100%;
+    text-decoration: none;
 }
 
 .menu-logo img {
-    margin: 0 auto; /* Auto margin can also help centering */
+    margin: 0;
     display: block;
+    max-height: 60px;
+    width: auto !important;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.menu-logo h1 {
+    font-size: 22px !important;
+    margin: 0 !important;
+    padding: 0 0 0 15px !important;
+    color: #fff;
+    white-space: nowrap;
+    align-self: center;
+    transition: all 0.3s ease;
 }
 
 /* --- Fix for Sticky Header Logo Padding --- */
 .is-fixed .menu-logo {
-    padding: 10px 0 !important;
-    height: auto !important; /* Allow height to adjust */
+    padding: 5px 0 !important;
+    height: 70px !important;
 }
 
 .is-fixed .menu-logo img {
-    max-height: 50px;
-    width: auto;
+    max-height: 45px !important;
+}
+
+.is-fixed .menu-logo h1 {
+    font-size: 18px !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .menu-logo {
+        height: 70px;
+    }
+    .menu-logo img {
+        max-height: 40px !important;
+        max-width: 100px;
+    }
+    .menu-logo h1 {
+        font-size: 18px !important;
+        padding-left: 10px !important;
+    }
+}
+
+/* --- Fix Hero Section Overlay --- */
+/* This cleanly replaces the broken and cut-off shape layers inside the slider */
+.rev_slider .tp-revslider-slidesli .slotholder:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity if needed */
+    z-index: 2;
+    pointer-events: none;
 }
